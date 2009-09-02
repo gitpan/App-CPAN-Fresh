@@ -1,0 +1,34 @@
+---
+abstract: 'backend for I<cpanf> command'
+author:
+  - 'Tatsuhiko Miyagawa <miyagawa@bulknews.net>'
+build_requires:
+  ExtUtils::MakeMaker: 6.42
+  Test::More: 0
+configure_requires:
+  ExtUtils::MakeMaker: 6.42
+distribution_type: module
+generated_by: 'Module::Install version 0.91'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: App-CPAN-Fresh
+no_index:
+  directory:
+    - inc
+    - t
+    - xt
+requires:
+  App::Cmd: 0.30
+  CPAN::Inject: 0
+  Filter::Util::Call: 0
+  JSON: 2.0
+  LWP: 0
+  Time::Piece: 0
+  URI: 0
+  perl: 5.8.1
+resources:
+  license: http://dev.perl.org/licenses/
+  repository: git://github.com/miyagawa/cpanf.git
+version: 0.04
