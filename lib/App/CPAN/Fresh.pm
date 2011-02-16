@@ -2,7 +2,7 @@ package App::CPAN::Fresh;
 
 use strict;
 use 5.008_001;
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 use base qw(App::Cmd::Simple);
 
@@ -98,7 +98,7 @@ sub inject {
         for my $entry (@{$res->{entries}}) {
             my $info = $self->parse_entry($entry->{body}, $entry->{date}) or next;
             if ($info->{dist} eq $dist) {
-                if ($info->{version} =~ /_/ && !$opt->{devel}) {
+                if ($info->{version} =~ /_|-TRIAL/ && !$opt->{devel}) {
                     warn "$info->{dist}-$info->{version} found: No -d option, skipping\n";
                     return;
                 }
@@ -147,7 +147,7 @@ sub parse_entry {
         return;
     }
 
-    if ($body =~ /^([\w\-]+) ([0-9\._]*) by (.+?) - <a.*href="(http:.*?\.tar\.gz)"/) {
+    if ($body =~ /^([\w\-]+) ([0-9\._]*(?:-TRIAL)?) by (.+?) - <a.*href="(http:.*?\.tar\.gz)"/) {
         return {
             dist    => $1,
             version => $2,
